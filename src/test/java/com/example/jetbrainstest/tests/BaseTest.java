@@ -15,7 +15,9 @@ public class BaseTest {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
-        options.addArguments("--remote-allow-origins=*");
+        //
+         System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\116\\chromedriver.exe");
+        //options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

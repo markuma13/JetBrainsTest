@@ -23,6 +23,7 @@ public class BaseTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
         //WebDriverManager.chromedriver().setup();
         //ChromeOptions options = new ChromeOptions();

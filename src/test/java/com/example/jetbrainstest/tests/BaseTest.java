@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
@@ -14,14 +15,22 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
+        try {
+            System.setProperty("webdriver.gecko.driver", "C:/ChromeDriver/firefoxDriver/geckodriver.exe");
+            driver = new FirefoxDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup();
         //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--remote-allow-origins=*");
         //driver = new ChromeDriver(options);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //driver = new ChromeDriver();
+       // driver.manage().window().maximize();
+       // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     public static WebDriver getDriver(){

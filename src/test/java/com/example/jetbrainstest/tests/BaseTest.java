@@ -17,6 +17,7 @@ public class BaseTest {
     public void setUp() {
         try {
             System.setProperty("webdriver.gecko.driver", "C:/ChromeDriver/firefoxDriver/geckodriver.exe");
+            System.setProperty("file.encoding", "UTF-8");
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

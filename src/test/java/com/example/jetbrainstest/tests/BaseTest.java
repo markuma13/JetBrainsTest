@@ -1,5 +1,6 @@
 package com.example.jetbrainstest.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
@@ -13,12 +14,12 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        ChromeOptions options = new ChromeOptions();
         // Fix the issue https://github.com/SeleniumHQ/selenium/issues/11750
-        //
-         System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\116\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
+        //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }

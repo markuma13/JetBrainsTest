@@ -13,18 +13,18 @@ import java.time.Duration;
 import java.util.List;
 
 /**
- * URL страницы https://www.jetbrains.com/datagrip/
+ * URL страницы <a href="https://www.jetbrains.com/datagrip/"/</a>
  * Конструктор DataGripPage
  * Автор @markuma13
  */
 public class DataGripPage {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private Actions actions;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+    private final Actions actions;
     private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(DataGripPage.class));
 
-    @FindBy(xpath = "//a[contains(@class,'wt-button wt-button_mode_contrast')]")
+    @FindBy(xpath = "(//a[@href='/datagrip/download/'])[2]")
     private WebElement downloadDataGripButton;
     @FindBy(xpath = "//button[text()='Take a tour']")
     private WebElement clickTakeATourButton;
@@ -42,8 +42,6 @@ public class DataGripPage {
     private WebElement exeWindows;
     @FindBy(xpath = "//input[@placeholder='Email']")
     private WebElement fieldEmail;
-    @FindBy(xpath = "//div[@data-test='error-message']")
-    private WebElement validateErrorFieldEmail;
     @FindBy(xpath = "//button[normalize-space()='Submit']")
     private WebElement buttonSubmit;
     @FindBy(css = "[data-test=\"error-message\"]")
@@ -183,16 +181,15 @@ public class DataGripPage {
     }
 
     public void waitSleep() {
-        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(50));
+        new WebDriverWait(driver, Duration.ofSeconds(50));
     }
 
     public void waitSoon(int waitTimeInSeconds) {
         try {
-            Thread.sleep(waitTimeInSeconds * 1000);
+            Thread.sleep(waitTimeInSeconds * 1000L);
         } catch (InterruptedException e) {
             LOG.info("Ошибка ожидания: " + e.getMessage());
             Thread.currentThread().interrupt();
         }
     }
-
 }

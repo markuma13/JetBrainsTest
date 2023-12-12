@@ -5,19 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
-
 /**
- * URL страницы &lt;a href=<a href="https://www.jetbrains.com/datagrip/buy/#commercial">...</a>!
+ * URL страницы  <a href="https://www.jetbrains.com/datagrip/buy/#commercial"></a>
  * Конструктор DataGripPricingPage
  * Автор @markuma13
  */
 public class DataGripPricingPage {
     private final WebDriver driver;
-    private final WebDriverWait wait;
     private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(DataGripPage.class));
 
     @FindBy(xpath = "(//div[@class='nowrap rs-subtitle-2 rs-subtitle-2_theme_light'])[1]")
@@ -49,7 +45,6 @@ public class DataGripPricingPage {
 
     public DataGripPricingPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         PageFactory.initElements(driver, this);
     }
 
@@ -132,6 +127,4 @@ public class DataGripPricingPage {
         LOG.info("Получен текст title страницы: \"" + actualTitle + "\"");
         return actualTitle;
     }
-
-
 }

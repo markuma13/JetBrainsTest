@@ -271,6 +271,4 @@ public class DataGripTest extends BaseTest {
         assertEquals(expectedTitle, dataGripPagePrice.checkTitlePage(),
                 "Заголовок страницы не совпадает с ожидаемым");
     }
-
-
 }

@@ -1,0 +1,128 @@
+Проверка активности кнопки What's New
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка What’s New доступна для клика
+
+Проверка активности кнопки Agile
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Agile доступна для клика
+
+Проверка активности кнопки Teams
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Teams доступна для клика
+
+Проверка активности кнопки Features
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Features доступна для клика
+
+Проверка активности кнопки Helpdesk
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Helpdesk доступна для клика
+
+Проверка активности кнопки Support
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Support доступна для клика
+
+Проверка активности кнопки Pricing
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Pricing доступна для клика
+
+Проверка активности кнопки Projects
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Projects доступна для клика
+
+Проверка активности кнопки Tasks
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Tasks доступна для клика
+
+Проверка активности кнопки AI Assistant
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка AI Assistant доступна для клика
+
+Проверка активности кнопки Knowledge Base
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Knowledge Base доступна для клика
+
+Проверка активности кнопки Agile Boards
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Agile Boards доступна для клика
+
+Проверка активности кнопки Timesheets
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Timesheets доступна для клика
+
+Проверка активности кнопки Gantt Charts
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Gantt Charts доступна для клика
+
+Проверка активности кнопки Reports
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Reports доступна для клика
+
+Проверка активности кнопки Helpdesk
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Helpdesk доступна для клика
+
+Проверка активности кнопки Workflows
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Убедиться, что кнопка Workflows доступна для клика
+
+Открытие страницы Teams
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3) Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+
+
+Проверка перехода в раздел Developers
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3)  Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+4) Кликнуть на кнопку Developers
+5) Убедиться, что на сайте открылась страница https://www.jetbrains.com/youtrack/teams/development.html
+
+
+Проверка перехода в раздел Marketing
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3)  Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+4) Кликнуть на кнопку Developers
+5) Убедиться, что на сайте открылась страница https://www.jetbrains.com/youtrack/teams/marketing.html
+
+
+Проверка перехода в раздел Support
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3)  Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+4) Кликнуть на кнопку Developers
+5) Убедиться, что на сайте открылась страница https://www.jetbrains.com/youtrack/teams/helpdesk/
+
+
+Проверка перехода в раздел Project Management
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3)  Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+4) Кликнуть на кнопку Developers
+5) Убедиться, что на сайте открылась страница https://www.jetbrains.com/youtrack/teams/management.html
+
+
+Проверка перехода в раздел Designers
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3)  Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+4) Кликнуть на кнопку Developers
+5) Убедиться, что на сайте открылась страница https://www.jetbrains.com/youtrack/teams/design.html
+
+
+Проверка перехода в раздел QA
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3)  Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+4) Кликнуть на кнопку Developers
+5) Убедиться, что на сайте открылась страница https://www.jetbrains.com/youtrack/teams/qa.html
+
+
+Проверка перехода в раздел Operations and Legal
+1) Перейти на страницу https://www.jetbrains.com/youtrack/
+2) Кликнуть на кнопку Teams
+3)  Убедиться, что на сайте открылся раздел https://www.jetbrains.com/youtrack/teams/
+4) Кликнуть на кнопку Developers
+5) Убедиться, что на сайте открылась страница https://www.jetbrains.com/youtrack/teams/operations.html

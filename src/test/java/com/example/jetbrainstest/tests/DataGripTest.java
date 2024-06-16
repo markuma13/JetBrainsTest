@@ -46,25 +46,24 @@ public class DataGripTest extends BaseTest {
     @DisplayName("Проверка перехода на страницу и работы чекбосов кнопки Download")
     public void checkPageDataGripAndDownloadButtonComboBox() {
         dataGripPage.clickButtonDataGripDownload();
-        dataGripPage.waitSleep();
+
         assertEquals("https://www.jetbrains.com/datagrip/download/#section=windows",
                 getDriver().getCurrentUrl(), "Не удалось перейти на ожидаемую страницу!");
         assertFalse(dataGripPage.getComboBoxes().isEmpty(), "Список комбобоксов пустой");
     }
 
     @Test
-    @DisplayName("Проверка открытие и закрытие видеоплеера")
-    public void playVideoButtonTakeATour() {
-        assertTrue(dataGripPage.checkTakeATourButton(), "Кнопка не активна");
-        dataGripPage.clickButtonTakeATour();
-        dataGripPage.clickPlayAndStopPlayer();
-        assertFalse(dataGripPage.isPlayerClosed(), "Видеоплеер не закрылся");
+    @DisplayName("Проверка активности кнопок на видео")
+    public void playVideoJetBrainsAI() {
+        assertTrue(dataGripPage.checkExploreJetBrainsAIButton(), "Кнопка не активна");
+        dataGripPage.clickButtonExploreJetBrainsAI();
+        assertTrue(dataGripPage.checkWatchVideoButton(), "Кнопка WatchVideo для воспроизведение видео не активна");
     }
 
     @Test
     @DisplayName("Проверка открытия страницы")
-    public void activeDiscoveryPage() {
-        dataGripPage.clickDiscoverButton();
+    public void activeMoreFeaturesPage() {
+        dataGripPage.clickMoreFeaturesButton();
         assertEquals("https://www.jetbrains.com/datagrip/features/", getDriver().getCurrentUrl(), "Не верная ссылка");
     }
 
@@ -72,7 +71,6 @@ public class DataGripTest extends BaseTest {
     @DisplayName("Проверка комбобоксов и активности кнопки exe.Windows")
     public void checkPageDataGripComboBox() {
         assertFalse(dataGripPage.getComboBoxes().isEmpty(), "Список комбобоксов пустой");
-        dataGripPage.waitSleep();
         assertTrue(dataGripPage.checkButtonExeWindowsComboBox(), "Кнопка не активна");
     }
 
@@ -103,7 +101,6 @@ public class DataGripTest extends BaseTest {
                 "Ожидалось, что введенный email будет соответствовать скопированному значению из буфера обмена.");
 
         String getMessageEmail = "Thanks for your request!";
-        dataGripPage.waitSoon(3);
         assertEquals(getMessageEmail, dataGripPage.getTextEnteringEmail(), "Сообщение не отоброзилось после отправки Email");
 
         generateEmail.switchToTab(2);
@@ -117,7 +114,7 @@ public class DataGripTest extends BaseTest {
     @DisplayName("Проверка ввода пустого email")
     public void invalidCheckValedateEmail() {
         String emptyEmail = dataGripPage.enterInvalidEmailGetText("");
-        assertEquals(emptyEmail, "This field is required.", "Неккоректный текст сообщения валидации");
+        assertEquals(emptyEmail, "This field is required", "Неккоректный текст сообщения валидации");
     }
 
 
@@ -126,17 +123,14 @@ public class DataGripTest extends BaseTest {
     @DisplayName("Проверка ввода невалидного Email")
     public void checkInvalidEnterEmail(String email) {
         String entering = dataGripPage.enterInvalidEmailGetText(email);
-        assertEquals(entering, "Please enter a valid email address.", "Неккоректный текст сообщения валидации");
+        assertEquals(entering, "E-mail address is not correct", "Неккоректный текст сообщения валидации");
     }
 
-
     @Test
-    @DisplayName("Проверка открытия страницы third-parties через tooltip")
-    public void tooltipVisabilityElementsClickPartyServices() {
-        dataGripPage.clickLinkPartyServices();
-        generateEmail.switchToTab(1);
-        assertEquals("https://www.jetbrains.com/legal/docs/privacy/third-parties/",
-                getDriver().getCurrentUrl(), "Не верная ссылка");
+    @DisplayName("Проверка открытия страницы через кнопку Choose your IDE")
+    public void checkContactUsUrlPege() {
+        dataGripPage.clickButtonChooseYourIDE();
+        assertEquals("https://www.jetbrains.com/ides/", getDriver().getCurrentUrl(), "Не верная ссылка");
     }
 
     @Test
@@ -164,25 +158,31 @@ public class DataGripTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка сумм продуктов на страницы цен")
+    @DisplayName("Проверка сумм продуктов на страницы цен Pricing")
     public void checkPricesPageDataGrip() {
         dataGripPage.clickPricingButton();
-        assertEquals("https://www.jetbrains.com/datagrip/buy/#commercial",
-                getDriver().getCurrentUrl(), "Не удалось перейти на ожидаемую страницу!");
+        String currentUrl = getDriver().getCurrentUrl();
+        String expectedUrl = "https://www.jetbrains.com/datagrip/buy";
+
+        assertTrue(currentUrl.contains(expectedUrl), "Не удалось перейти на ожидаемую страницу!");
 
         String priceAllPackYears = "US $779.00";
-        assertEquals(priceAllPackYears, dataGripPagePrice.checkPriceAllProductsPack(), "Не верная сумма AllPackYears");
+        assertEquals(priceAllPackYears, dataGripPagePrice.checkPriceAllProductsPack(),
+                "Не верная сумма AllPackYears");
 
         String priceDataGripBase = "US $229.00";
-        assertEquals(priceDataGripBase, dataGripPagePrice.checkPriceDataGripBasesBiling(), "Не верная YearsBases сумма");
+        assertEquals(priceDataGripBase, dataGripPagePrice.checkPriceDataGripBasesBiling(),
+                "Не верная YearsBases сумма");
 
-        dataGripPagePrice.clickSwitchTariff();
+        dataGripPagePrice.clickSwitchMonthlyBillingTariff();
 
         String priceMonthlyDataGripBase = "US $22.90";
-        assertEquals(priceMonthlyDataGripBase, dataGripPagePrice.checkPriceMonthlyBillingDataGrip(), "Не верная сумма MonthlyBase");
+        assertEquals(priceMonthlyDataGripBase, dataGripPagePrice.checkPriceMonthlyBillingDataGrip(),
+                "Не верная сумма MonthlyBase");
 
         String priceMonthlyAllProductsPack = "US $77.90";
-        assertEquals(priceMonthlyAllProductsPack, dataGripPagePrice.checkPriceMonthlyBillingAllProductsPack(), "Не верная сумма MonthlyAllPack");
+        assertEquals(priceMonthlyAllProductsPack, dataGripPagePrice.checkPriceMonthlyBillingAllProductsPack(),
+                "Не верная сумма MonthlyAllPack");
     }
 
     @Test
@@ -195,10 +195,9 @@ public class DataGripTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка заголовка открытой страницы Business Or Individual через FAQ в разделе Pricing")
+    @DisplayName("Проверка заголовка открытой страницы For Organizations or for Individual Use? в разделе Further information")
     public void checkBusinessOrIndividualAndPricing() {
         dataGripPage.clickPricingButton();
-        dataGripPagePrice.clickPricingFaq();
         dataGripPagePrice.clickLickBusinessOrIndividual();
         generateEmail.switchToTab(2);
 
@@ -208,10 +207,9 @@ public class DataGripTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка заголовка открытой страницы Subscription Options через FAQ в разделе Pricing")
+    @DisplayName("Проверка заголовка открытой страницы Subscription Options в разделе Further information")
     public void checkSubscriptionOptions() {
         dataGripPage.clickPricingButton();
-        dataGripPagePrice.clickPricingFaq();
         dataGripPagePrice.clickLinkSubscriptionOptions();
         generateEmail.switchToTab(2);
 
@@ -221,36 +219,33 @@ public class DataGripTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка заголовка открытой страницы JetBrains For Business через FAQ в разделе Pricing")
+    @DisplayName("Проверка заголовка открытой страницы JetBrains For Business в разделе Further information")
     public void checkJetBrainsForBusiness() {
         dataGripPage.clickPricingButton();
-        dataGripPagePrice.clickPricingFaq();
         dataGripPagePrice.clickLinkJetBrainsForBusiness();
         generateEmail.switchToTab(2);
 
-        String expectedTitle = "JetBrains Tools for Your Business";
+        String expectedTitle = "JetBrains Tools For Business";
         assertEquals(expectedTitle, dataGripPagePrice.checkTitlePage(),
                 "Заголовок страницы не совпадает с ожидаемым");
     }
 
     @Test
-    @DisplayName("Проверка заголовка открытой страницы Purchase Terms через FAQ в разделе Pricing")
+    @DisplayName("Проверка заголовка открытой страницы Purchase Terms в разделе Further information")
     public void checkPurchaseTerms() {
         dataGripPage.clickPricingButton();
-        dataGripPagePrice.clickPricingFaq();
         dataGripPagePrice.clickLinkPurchaseTerms();
         generateEmail.switchToTab(2);
 
-        String expectedTitle = "Purchase Terms - JetBrains";
+        String expectedTitle = "Terms and Conditions of Purchase";
         assertEquals(expectedTitle, dataGripPagePrice.checkTitlePage(),
                 "Заголовок страницы не совпадает с ожидаемым");
     }
 
     @Test
-    @DisplayName("Проверка заголовка открытой страницы Licensing And Purchasing через FAQ в разделе Pricing")
+    @DisplayName("Проверка заголовка открытой страницы Licensing And Purchasing через FAQ в разделе Further information")
     public void checkLicensingAndPurchasing() {
         dataGripPage.clickPricingButton();
-        dataGripPagePrice.clickPricingFaq();
         dataGripPagePrice.clickLinkFaq();
         generateEmail.switchToTab(2);
 
@@ -260,17 +255,14 @@ public class DataGripTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка заголовка открытой страницы Contact Sale через FAQ в разделе Pricing")
+    @DisplayName("Проверка заголовка открытой страницы Contact Us в разделе Further information")
     public void checkContactSales() {
         dataGripPage.clickPricingButton();
-        dataGripPagePrice.clickPricingFaq();
-        dataGripPagePrice.clickLinkContactSales();
-        generateEmail.switchToTab(2);
+        dataGripPagePrice.clickButtonContactUs();
 
         String expectedTitle = "Sales & Order Support - JetBrains";
         assertEquals(expectedTitle, dataGripPagePrice.checkTitlePage(),
                 "Заголовок страницы не совпадает с ожидаемым");
     }
-
 
 }

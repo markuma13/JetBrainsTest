@@ -24,28 +24,26 @@ public class DataGripPricingPage {
     private WebElement priceYearlyBillingDataGrip;
     @FindBy(xpath = "(//div[@class='nowrap rs-subtitle-2 rs-subtitle-2_theme_light'])[2]")
     private WebElement priceYearlyBillingAllProductsPack;
-    @FindBy(xpath = "(//span[@data-test='switcher']//button)[2]")
-    private WebElement switchPriceTariff;
+    @FindBy(xpath = "(//div[text()='Monthly billing'])[2]")
+    private WebElement switchPriceMonthlyBillingTariff;
     @FindBy(xpath = "(//div[@class='nowrap rs-subtitle-2 rs-subtitle-2_theme_light'])[1]")
     private WebElement priceMonthlyBillingDataGrip;
     @FindBy(xpath = "(//div[@class='nowrap rs-subtitle-2 rs-subtitle-2_theme_light'])[2]")
     private WebElement priceMonthlyBillingAllProductsPack;
     @FindBy(xpath = "//a[@href='https://www.jetbrains.com/shop/buy?item=C:N:DB:Y']")
     private WebElement buyButton;
-    @FindBy(xpath = "//div[text()='FAQ']")
+    @FindBy(xpath = "//div/div/a[text()='FAQ']")
     private WebElement faqButton;
-    @FindBy(xpath = "//a[normalize-space()='Business or Individual?']")
+    @FindBy(xpath = "//a[normalize-space()='For Organizations or for Individual Use?']")
     private WebElement linkTextBusinessOrIndividual;
     @FindBy(xpath = "//a[normalize-space()='Subscription Options']")
     private WebElement linkTextSubscriptionOptions;
     @FindBy(xpath = "//a[normalize-space()='JetBrains for Business']")
     private WebElement linkTextJetBrainsForBusiness;
-    @FindBy(xpath = "//a[@data-test='buy-page-faq-purchase-terms']")
+    @FindBy(xpath = "//div/div/a[text()='Purchase Terms']")
     private WebElement linkTextPurchaseTerms;
-    @FindBy(xpath = "//a[@data-test='buy-page-faq-faq']")
-    private WebElement linkTextFaq;
-    @FindBy(xpath = "//a[contains(text(),'Contact Sales')]")
-    private WebElement linkTextContactSales;
+    @FindBy(xpath = "//a[normalize-space()='Contact us']")
+    private WebElement contactUsButton;
 
     public DataGripPricingPage(WebDriver driver) {
         this.driver = driver;
@@ -67,9 +65,9 @@ public class DataGripPricingPage {
         return value;
     }
 
-    public void clickSwitchTariff() {
-        LOG.info("Переключение тарифа");
-        switchPriceTariff.click();
+    public void clickSwitchMonthlyBillingTariff() {
+        LOG.info("Переключение тарифа на Monthly billing");
+        switchPriceMonthlyBillingTariff.click();
     }
 
     public String checkPriceMonthlyBillingDataGrip() {
@@ -89,11 +87,6 @@ public class DataGripPricingPage {
     public void clickBuyButton() {
         buyButton.click();
         LOG.info("Клик по кнопки Bay");
-    }
-
-    public void clickPricingFaq() {
-        faqButton.click();
-        LOG.info("Клик по кнопки Faq в разделе Subscription");
     }
 
     public void clickLickBusinessOrIndividual() {
@@ -117,13 +110,13 @@ public class DataGripPricingPage {
     }
 
     public void clickLinkFaq() {
-        linkTextFaq.click();
+        faqButton.click();
         LOG.info("Клик по текстовой ссылке FAQ");
     }
 
-    public void clickLinkContactSales() {
-        linkTextContactSales.click();
-        LOG.info("Клик по текстовой ссылке Contact Sales");
+    public void clickButtonContactUs() {
+        contactUsButton.click();
+        LOG.info("Клик по кнопке Contact Us");
     }
 
     public String checkTitlePage() {
@@ -132,6 +125,5 @@ public class DataGripPricingPage {
         LOG.info("Получен текст title страницы: \"" + actualTitle + "\"");
         return actualTitle;
     }
-
 
 }

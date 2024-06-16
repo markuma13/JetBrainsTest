@@ -15,30 +15,42 @@ public class MyWait {
     private WebDriverWait wait;
     private final int secondsToWait;
 
-    public static MyWait myWait(int seconds){
+    public static MyWait myWait(int seconds) {
         return new MyWait(seconds);
     }
-    public MyWait(int seconds ) {
+
+    public MyWait(int seconds) {
         this.secondsToWait = seconds;
         wait = new WebDriverWait(BaseTest.getDriver(), Duration.ofSeconds(seconds));
     }
-    public WebElement clickable(WebElement element){
+
+    public WebElement clickable(WebElement element) {
         LOG.info("Ждем " + secondsToWait + " секунд пока элемент станет кликабельным " + element.toString());
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public WebElement visible(WebElement element){
+    public WebElement visible(WebElement element) {
         LOG.info("Ждем " + secondsToWait + " секунд пока элемент станет видимым " + element.toString());
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
-    public Alert alertIsPresented(){
-        LOG.info("Ждем " + secondsToWait + " секунд пока появится alert" );
+
+    public Alert alertIsPresented() {
+        LOG.info("Ждем " + secondsToWait + " секунд пока появится alert");
         return wait.until(ExpectedConditions.alertIsPresent());
     }
-    public WebElement locatorVisible(By element){
+
+    public WebElement locatorVisible(By element) {
         LOG.info("Ждем " + secondsToWait + " секунд пока локатор появится");
         return wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
+    public void waitSoon(int waitTimeInSeconds) {
+        try {
+            Thread.sleep(waitTimeInSeconds * 1000L);
+        } catch (InterruptedException e) {
+            LOG.info("Ошибка ожидания: " + e.getMessage());
+            Thread.currentThread().interrupt();
+        }
+    }
 
 }

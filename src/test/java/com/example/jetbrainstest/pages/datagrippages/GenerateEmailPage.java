@@ -15,8 +15,10 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Set;
 
+import static com.example.jetbrainstest.MyWait.myWait;
+
 /**
- * URL страницы генерации email &lt;a href=<a href="https://tempmail.plus/ru/#">...</a>!
+ * URL страницы генерации email &lt;a href=<a href="https://tempail.com/ru/">...</a>!
  * Конструктор GenerateEmailPage
  * Автор @markuma13
  */
@@ -25,9 +27,10 @@ public class GenerateEmailPage {
     private final WebDriverWait wait;
     private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(DataGripPage.class));
 
-    @FindBy(xpath = "//button[@id='pre_copy']")
+
+    @FindBy(xpath = "//input[@type='email']")
     public WebElement copiedEmail;
-    @FindBy(xpath = "//div[contains(text(),'Your subscription confirmation for major DataGrip ')]")
+    @FindBy(xpath = "//h2[contains(@class,'text-2xl font-bold')]")
     private WebElement getTextmessage;
 
     public GenerateEmailPage(WebDriver driver) {
@@ -37,8 +40,9 @@ public class GenerateEmailPage {
     }
 
     public void copiedButtonEmail() {
-        driver.get("https://tempmail.plus/ru/#!");
+        driver.get("https://mail.tm/ru/");
         LOG.info("Открытие страницы генерации Email");
+        myWait(10).waitSoon(3);
         copiedEmail.click();
         LOG.info("Копирование сгенерированного Email");
     }
@@ -46,7 +50,8 @@ public class GenerateEmailPage {
     public void messageCheckDataGrip() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(200));
-            WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='row no-gutters']")));
+            WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+                    "//div[@class='truncate text-sm leading-5 text-gray-900 dark:text-gray-300']")));
             message.click();
             LOG.info("Открытие полученного письма");
         } catch (Exception e) {
